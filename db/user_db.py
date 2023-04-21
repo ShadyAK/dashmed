@@ -3,7 +3,6 @@ import sqlite3
 from sqlite3 import Cursor, Connection
 import constants.queries as QUERIES
 import constants.constants as CONSTANTS
-from collections import defaultdict
 from utils.utils import check_graph_is_tree, node_exists
 import logging
 
@@ -34,6 +33,7 @@ class USER_DATABASE:
                 insert_into_node_table = f"INSERT INTO nodes (NAME, DATA, DEPTH) VALUES ('{node_name}', '{val}', {depth+1})"
                 self.__cur.execute(insert_into_node_table)
                 self.insert_edge(node_name, parent_name)
+                self.commit_change()
                 logging.info(f"Inserted node {node_name} with val {val}")
             else:
                 logging.warn(f"Node {node_name} already exists")
