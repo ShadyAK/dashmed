@@ -1,0 +1,2 @@
+NODES_TABLE_NAME = "nodes"
+EDGES_TABLE_NAME = "edges"
